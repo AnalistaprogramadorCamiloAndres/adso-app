@@ -29,10 +29,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route to register a new user 
  // Assuming ClienteController is in the App\Http\Controllers namespace
-Route::get('/api/clientes/', [ClienteController::class, 'getData']);
-Route::put('/api/clientes/', [ClienteController::class, 'update']);
-Route::post('/api/clientes/', [ClienteController::class, 'save']);
-Route::delete('/api/clientes/', [ClienteController::class, 'delete']);
+Route::get('/api/cliente/', [ClienteController::class, 'getData']);
+Route::put('/api/cliente/', [ClienteController::class, 'update']);
+Route::post('/api/cliente/', [ClienteController::class, 'save']);
+Route::delete('/api/cliente/', [ClienteController::class, 'delete']);
 
 Route::get('/api/empleado/', [Empleado::class, 'getData']);
 Route::put('/api/empleado/', [Empleado::class, 'update']);
