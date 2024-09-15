@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Producto;
 
-
-class Facturacion extends Controller
+class ProductoControllers extends Controller
 {
     public function getData (Request $request){
         return response()->json([
@@ -19,9 +19,17 @@ class Facturacion extends Controller
      */
 public function save(Request $request)
 {
+    $producto = producto::create([
+        'ID_PRODUCTO' => $request->ID_PRODUCTO,
+        'NOMBRE_PRODUCTO' => $request->NOMBRE_PRODUCTO,
+        'DESCRIPCION' => $request->DESCRIPCION,
+        'PRECIO' => $request->PRECIO,
+        'STOCK_DISPONIBLE' => $request->STOCK_DISPONIBLE
+    ]);
     return response()->json([
         'status' => '200',
         'message' => 'Guardado con exito',
+        'data' => $producto
     ]);
 }
 

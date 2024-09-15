@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\IngresoAlSistema;
 
 
-class Empleado extends Controller
+
+
+
+class IngresoAlSistemaControllers extends Controller
 {
     public function getData (Request $request){
         return response()->json([
@@ -19,9 +23,16 @@ class Empleado extends Controller
      */
 public function save(Request $request)
 {
+$ingresoalsistema = ingresoalsistema::create([
+        'ID_USUARIO' => $request->ID_USUARIO,
+        'NOMBRE_USUARIO' => $request->NOMBRE_USUARIO,
+        'CONTRASEÑA' => $request->NOMBRE_USUARIO
+        
+    ]);
     return response()->json([
         'status' => '200',
         'message' => 'Guardado con exito',
+        'data' => $ingresoalsistema,
     ]);
 }
 

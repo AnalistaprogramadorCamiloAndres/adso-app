@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class IngresoAlSistema extends Model
 {
     use HasFactory;
+    protected $table = 'ingresoalsistema';
+
+    protected $fillable = [
+        'ID_USUARIO',
+        'NOMBRE_USUARIO',
+        'CONTRASEÑA' 
+    ];
+    
+    public $timstamps = false;
 }

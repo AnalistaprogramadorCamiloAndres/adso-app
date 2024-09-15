@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Empleado;
 use Illuminate\Http\Request;
 
+class EmpleadoControllers extends Controller
 
-class InspeccionDeCalidad extends Controller
 {
     public function getData (Request $request){
         return response()->json([
@@ -19,9 +20,22 @@ class InspeccionDeCalidad extends Controller
      */
 public function save(Request $request)
 {
+$empleados = Empleado::create([
+        'NOMBRES' => $request->NOMBRES,
+        'APELLIDOS' => $request->APELLIDOS,
+        'CARGO' => $request->CARGO,
+        'TELEFONO' => $request->TELEFONO,
+        'CORREO_ELECTRONICO' => $request->CORREO_ELECTRONICO,
+        'DIRECCION' => $request->DIRECCION,
+        'CEDULA_DE_CIUDADANIA' => $request->CEDULA_DE_CIUDADANIA,
+        'ID_USUARIO_FK' => $request->ID_USUARIO_FK
+
+
+    ]);
     return response()->json([
         'status' => '200',
         'message' => 'Guardado con exito',
+        'data' => $empleados,
     ]);
 }
 

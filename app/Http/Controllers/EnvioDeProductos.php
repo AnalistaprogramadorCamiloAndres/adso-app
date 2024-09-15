@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\EnvioDeProducto;
 use Illuminate\Http\Request;
 
 
@@ -19,6 +20,15 @@ class EnvioDeProductos extends Controller
      */
 public function save(Request $request)
 {
+    $envioDeProductos = EnvioDeProducto:: create([
+        'ID_ENVIO' => $request->ID_ENVIO,
+        'FECHA_DE_ENVIO' => $request->FECHA_DE_ENVIO,
+        'TRANSPORTE_UTILIZADO' => $request->TRANSPORTE_UTILIZADO,
+        'EMBALAJE' => $request->EMBALAJE,
+        'ID_PRODUCTO_FK' => $request->ID_PRODUCTO_FK,
+        'ID_EMPLEADO_FK' => $request->ID_EMPLEADO_FK
+
+    ]);
     return response()->json([
         'status' => '200',
         'message' => 'Guardado con exito',
