@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
@@ -26,18 +27,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/api/login', [AuthController::class, 'login']);
+
 
 // Route to register a new user 
  // Assuming ClienteController is in the App\Http\Controllers namespace
 Route::get('/api/cliente/', [ClienteController::class, 'getData']);
 Route::put('/api/cliente/', [ClienteController::class, 'update']);
 Route::post('/api/cliente/', [ClienteController::class, 'save']);
-Route::delete('/api/cliente/', [ClienteController::class, 'delete']);
+Route::delete('/api/cliente/{id}', [ClienteController::class, 'delete']);
 
 Route::get('/api/empleado/', [EmpleadoControllers::class, 'getData']);
 Route::put('/api/empleado/', [EmpleadoControllers::class, 'update']);
 Route::post('/api/empleado/', [EmpleadoControllers::class, 'save']);
-Route::delete('/api/empleado/', [EmpleadoControllers::class, 'delete']);
+Route::delete('/api/empleado/{id}', [EmpleadoControllers::class, 'delete']);
 
 Route::get('/api/enviodeproductos/', [EnvioDeProductos::class, 'getData']);
 Route::put('/api/enviodeproductos/', [EnvioDeProductos::class, 'update']);
@@ -47,7 +50,7 @@ Route::delete('/api/enviodeproductos/', [EnvioDeProductos::class, 'delete']);
 Route::get('/api/facturacion/', [FacturacionControllers::class, 'getData']);
 Route::put('/api/facturacion/', [FacturacionControllers::class, 'update']);
 Route::post('/api/facturacion/', [FacturacionControllers::class, 'save']);
-Route::delete('/api/facturacion/', [FacturacionControllers::class, 'delete']);
+Route::delete('/api/facturacion/{id}', [FacturacionControllers::class, 'delete']);
 
 Route::get('/api/ingresoalsistema/', [IngresoAlSistemaControllers::class, 'getData']);
 Route::put('/api/ingresoalsistema/', [IngresoAlSistemaControllers::class, 'update']);
@@ -67,4 +70,4 @@ Route::delete('/api/lotedeproduccion/', [LoteDeProduccionControllers::class, 'de
 Route::get('/api/producto/', [ProductoControllers::class, 'getData']);
 Route::put('/api/producto/', [ProductoControllers::class, 'update']);
 Route::post('/api/producto/', [ProductoControllers::class, 'save']);
-Route::delete('/api/producto/', [ProductoControllers::class, 'delete']);
+Route::delete('/api/producto/{id}', [ProductoControllers::class, 'delete']);
